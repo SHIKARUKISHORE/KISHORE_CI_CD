@@ -6,7 +6,8 @@ pipeline {
     
   }
 environment {
-    path = "C:\Users\Kishore Shikaru"
+    path = "C:\\Users\\Kishore Shikaru"
+
 
 }
 
