@@ -21,7 +21,7 @@ environment {
     stage('Install Frontend') {
       steps {
         dir('frontend') {
-          sh 'npm install'
+          bat 'npm install'
         }
       }
     }
@@ -29,7 +29,7 @@ environment {
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          sh 'npm run build'
+          bat 'npm run build'
         }
       }
     }
@@ -37,8 +37,8 @@ environment {
     stage('Build Backend') {
       steps {
         dir('backend') {
-          sh 'dotnet restore'
-          sh 'dotnet build --configuration Release'
+          bat 'dotnet restore'
+          bat 'dotnet build --configuration Release'
         }
       }
     }
@@ -46,7 +46,7 @@ environment {
     stage('Publish Backend') {
       steps {
         dir('backend') {
-          sh 'dotnet publish -c Release -o out'
+          bat 'dotnet publish -c Release -o out'
         }
       }
     }
