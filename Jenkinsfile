@@ -1,8 +1,14 @@
 pipeline {
-    agent any
+    agent any 
 
     tools {
         nodejs 'Nodejs_18'
+    }
+     environment {
+        FRONTEND_DIR = 'CLIENT_KISHORE'
+        BACKEND_DIR = 'SERVER_RAM'
+        BACKEND_PUBLISH_DIR = 'SERVER_RAM/publish_output'
+        FRONTEND_BUILD_DIR = 'CLIENT_KISHORE/build'
     }
 
     stages {
@@ -14,7 +20,7 @@ pipeline {
 
         stage('Install Frontend') {
             steps {
-                dir('frontend') {
+                dir('CLIENT_KISHORE') {
                     bat 'npm install'
                 }
             }
@@ -22,40 +28,35 @@ pipeline {
 
         stage('Build Frontend') {
             steps {
-                dir('frontend') {
+                dir('CLIENT_KISHORE') {
                     bat 'npm run build'
+                }
+            }
+        }
+         stage('Restore Backend Dependencies') {
+            steps {
+                dir('SERVER_RAM') {
+                    bat 'dotnet restore'
                 }
             }
         }
 
         stage('Build Backend') {
             steps {
-                dir('backend') {
-                    bat 'dotnet build'
+                dir('SERVER_RAM') {
+                    bat 'dotnet build --configuration Release'
                 }
             }
         }
 
         stage('Publish Backend') {
             steps {
-                dir('backend') {
-                    bat 'dotnet publish -c Release -o published'
+                dir('SERVER_RAM') {
+                    bat 'dotnet publish --configuration Release -o publish_output'
                 }
-            }
-        }
-
-        stage('Deploy (Optional)') {
-            steps {
-                echo 'Deploy step would go here...'
-            }
-        }
-
-        stage('Complete') {
-            steps {
-                echo 'CI/CD pipeline completed successfully!'
             }
         }
     }
 }
 
-
+    
