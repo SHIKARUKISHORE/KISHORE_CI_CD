@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     tools {
-        nodejs 'Nodejs_18'
+        nodejs 'Nodejs_22'
     }
      environment {
         FRONTEND_DIR = 'CLIENT_KISHORE'
