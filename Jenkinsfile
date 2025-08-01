@@ -33,7 +33,8 @@ pipeline {
                 }
             }
         }
-         stage('Restore Backend Dependencies') {
+
+        stage('Restore Backend Dependencies') {
             steps {
                 dir('SERVER_RAM') {
                     bat 'dotnet restore'
@@ -58,5 +59,3 @@ pipeline {
         }
     }
 }
-
-    
