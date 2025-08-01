@@ -16,15 +16,15 @@ environment {
       steps {
         git url: 'https://github.com/SHIKARUKISHORE/KISHORE_CI_CD.git', branch: 'main'
       }
-    }
+    // }
 
-    stage('Install Frontend') {
-      steps {
-        dir('frontend') {
-          bat 'npm install'
-        }
-      }
-    }
+    // stage('Install Frontend') {
+    //   steps {
+    //     dir('frontend') {
+    //       bat 'npm install'
+    //     }
+    //   }
+    // }
 
     stage('Build Frontend') {
       steps {
