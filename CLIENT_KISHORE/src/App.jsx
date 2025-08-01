@@ -7,7 +7,7 @@ function App() {
 
   // Fetch employees from API
   useEffect(() => {
-    fetch("https://localhost:7005/api/Json_Data_")  // Your WebAPI URL
+    fetch("https://localhost:7005/api/Json_Data_")  
       .then(res => res.json())
       .then(data => setEmployees(data))
       .catch(err => console.error(err));
