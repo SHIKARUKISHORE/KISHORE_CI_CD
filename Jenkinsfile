@@ -16,7 +16,8 @@ environment {
       steps {
         git url: 'https://github.com/SHIKARUKISHORE/KISHORE_CI_CD.git', branch: 'main'
       }
-    // }
+    }
+  }
 
     // stage('Install Frontend') {
     //   steps {
